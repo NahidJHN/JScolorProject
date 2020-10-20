@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>RGB color Game</title>
+      <style>
+		.myDiv {
+	padding: 10px;
+	margin: auto;
+	color: white;
+	text-align: center;
+	line-height: 10px;
+	width: 70%;
+	line-height: 58px;
+	font-size: 24px;
+	margin-bottom: 2em;
+}
+input{cursor:pointer}
+.range {
+	width: 100%;
+	margin: auto;
+    text-align: center;
+    
+}
+
+.center {
+	text-align: center;
+	margin-bottom: 45px;
+}
+
+input.Range {
+	width: 50%;
+}
+
+#myText {
+	text-align: center;
+}
+	  </style>
+   </head>
+   <body>
+      <div id="outPut" class="myDiv">
+      </div>
+      <div class="range">
+         <div class="center">
+            <div>RED</div>
+            <input type="range" oninput='myEventHandeler()' class='Range' value='10' name="" min="0" max="255" id="redRange">
+            <div class="center" id='redValue'> </div>
+         </div>
+         <div class="center">
+            <div>GREEN</div>
+            <input type="range" class='Range' oninput='myEventHandeler()' value='10' name="" min="0" max="255"id="greenRange">
+            <div class="center" id='greenValue'></div>
+         </div>
+         <div class="center">
+            <div>BLUE</div>
+            <input type="range" class='Range' oninput='myEventHandeler()' value='10' name="" min="0" max="255"id="blueRange">
+            <div class="center" id='blueValue'></div>
+         </div>
+      </div>
+      <div id="myText">
+         <h1>Increase And Decrease The Range And See The Effect</h1>
+      </div>
+      <script>	
+	  //selecting tags and declaring variable
+let outputValue = document.getElementById("outPut")
+let redRange = document.getElementById("redRange")
+let greenRange = document.getElementById("greenRange")
+let blueRange = document.getElementById('blueRange')
+let redValue = document.getElementById('redValue')
+let greenValue = document.getElementById('greenValue')
+let blueValue = document.getElementById('blueValue')
+let myText = document.getElementById('myText')
+//variable declaration end 
+
+//Showing the initial value
+redValue.innerHTML = 'Value: ' + redRange.value
+greenValue.innerHTML = 'Value: ' + greenRange.value;
+blueValue.innerHTML = 'Value: ' + blueRange.value;
+outputValue.innerHTML = `RGB(${redRange.value},${greenRange.value},${blueRange.value})`
+outputValue.style.backgroundColor = `rgb(${redRange.value},${greenRange.value},${blueRange.value})`
+myText.style.color = `rgb(${redRange.value},${greenRange.value},${blueRange.value})`
+//showing the initial value end
+
+
+//creating function for onchange Event
+function myEventHandeler() {
+	redValue.innerText = 'Value:' + redRange.value;
+	greenValue.innerText = 'Value: ' + greenRange.value;
+	blueValue.innerText = 'Value:' + blueRange.value;
+	outputValue.style.backgroundColor = `rgb(${redRange.value},${greenRange.value},${blueRange.value})`
+	outputValue.innerHTML = `RGB(${redRange.value},${greenRange.value},${blueRange.value})`;
+
+
+	if (redRange.value == '255' && greenRange.value == '255' && blueRange.value == '255') {
+		outputValue.style.color = 'black'
+		myText.style.color = 'black'
+	} else {
+		outputValue.style.color = 'white'
+		myText.style.color = `rgb(${redRange.value},${greenRange.value},${blueRange.value})`;
+
+    }
+
+}
+//funtion end
+	  
+	  </script>
+   </body>
+</html>
